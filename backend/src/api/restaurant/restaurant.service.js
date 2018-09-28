@@ -22,4 +22,16 @@ const post = (req, res, next) => {
     restaurant.save().then(() => res.status(200).send())
 }
 
-module.exports = { get, getById, post }
+const putMenu = (req, res, next) => {
+    //const options = { runValidators: true, new: true }
+    Restaurant.findById({ _id: req.params.id })
+        .populate('menu')
+        .then(rest => {
+            rest.menu.push(req.body)
+            rest.save()
+                .then(() => res.status(200).send())
+        })
+
+}
+
+module.exports = { get, getById, post, putMenu }

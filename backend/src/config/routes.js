@@ -1,6 +1,6 @@
 const express = require('express')
 const Restaurant = require('../api/restaurant/restaurant.model')
-const { get, getById, post } = require('../api/restaurant/restaurant.service')
+const { get, getById, post, putMenu } = require('../api/restaurant/restaurant.service')
 
 module.exports = server => {
     server.get('/', (req, res, next) => {
@@ -23,4 +23,5 @@ module.exports = server => {
     // })
 
     server.post('/restaurants', post)
+    server.put('/restaurants/:id', putMenu)
 }
