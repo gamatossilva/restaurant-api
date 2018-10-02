@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 
-import { getList } from './RestaurantActions'
+import { getList, showUpdate } from './RestaurantActions'
 
 class RestaurantList extends Component {
     componentWillMount() {
@@ -15,7 +15,7 @@ class RestaurantList extends Component {
             <tr key={restaurant._id}>
                 <td>{restaurant.name}</td>
                 <td>
-                    <button className='btn btn-warning'>
+                    <button className='btn btn-warning' onClick={() => this.props.showUpdate(restaurant)}>
                         <i className='fa fa-pencil'></i>
                     </button>
                 </td>
@@ -30,7 +30,7 @@ class RestaurantList extends Component {
                     <thead>
                         <tr>
                             <th>Nome do Restaurante</th>
-                            <th>Ações</th>
+                            <th style={{}}>Ações</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -43,5 +43,5 @@ class RestaurantList extends Component {
 }
 
 const mapStateToProps = state => ({ list: state.restaurant.list })
-const mapDispatchToProps = dispatch => bindActionCreators({ getList }, dispatch)
+const mapDispatchToProps = dispatch => bindActionCreators({ getList, showUpdate }, dispatch)
 export default connect(mapStateToProps, mapDispatchToProps)(RestaurantList)

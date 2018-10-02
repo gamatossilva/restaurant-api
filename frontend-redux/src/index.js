@@ -11,7 +11,8 @@ import App from './main/App'
 import reducers from './main/reducers'
 import registerServiceWorker from './registerServiceWorker';
 
-const store = applyMiddleware(multi, thunk, promise)(createStore)(reducers)
+const devTools = window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+const store = applyMiddleware(multi, thunk, promise)(createStore)(reducers, devTools)
 
 ReactDOM.render(
     <Provider store={store}>

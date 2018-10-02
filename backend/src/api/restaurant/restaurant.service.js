@@ -27,7 +27,7 @@ const putMenu = (req, res, next) => {
     Restaurant.findById({ _id: req.params.id })
         .populate('menu')
         .then(rest => {
-            rest.menu.push(req.body)
+            req.body.menu.forEach(menu => rest.menu.push(menu))
             rest.save()
                 .then(() => res.status(200).send())
         })

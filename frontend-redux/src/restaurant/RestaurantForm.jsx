@@ -13,7 +13,8 @@ class RestaurantForm extends Component {
         const { handleSubmit } = this.props
         return (
             <form role='form' onSubmit={handleSubmit}>
-                <Field name='name' component={LabelAndInput} label='Nome do Restaurante' cols='12 4' placeholder='Nome do Restaurante' />
+                <Field name='name' component={LabelAndInput} label='Nome do Restaurante' cols='12 9 11' placeholder='Nome do Restaurante' />
+
                 <button type='submit' className='btn btn-primary'>
                     <i className='fa fa-plus'></i>
                 </button>

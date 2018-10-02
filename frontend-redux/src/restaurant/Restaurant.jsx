@@ -7,8 +7,9 @@ import PageHeader from '../template/PageHeader'
 
 import RestaurantList from './RestaurantList'
 import RestaurantForm from './RestaurantForm'
+import RestaurantMenuForm from './RestaurantMenuForm'
 
-import { init, create } from './RestaurantActions'
+import { init, create, update } from './RestaurantActions'
 
 const URL = 'http://localhost:3003/restaurants'
 
@@ -51,10 +52,11 @@ class Restaurant extends Component {
                 <PageHeader name='Restaurantes' small='Cadastro' />
                 <RestaurantForm onSubmit={this.props.create} />
                 <RestaurantList />
+                <RestaurantMenuForm onSubmit={this.props.update} />
             </div>
         )
     }
 }
 
-const mapDispatchToProps = dispatch => bindActionCreators({ init, create }, dispatch)
+const mapDispatchToProps = dispatch => bindActionCreators({ init, create, update }, dispatch)
 export default connect(null, mapDispatchToProps)(Restaurant)
